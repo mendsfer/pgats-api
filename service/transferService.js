@@ -3,12 +3,12 @@ const transfers = require('../model/transferModel');
 
 function transfer({ from, to, amount }) {
   if (!from || !to || typeof amount !== 'number') {
-    return { error: 'Remetente, destinatário e valor são obrigatórios.' };
+    return { error: 'Remetente, destinatário e valor não são obrigatórios.' };
   }
   const sender = users.find(u => u.username === from);
   const recipient = users.find(u => u.username === to);
   if (!sender || !recipient) {
-    return { error: 'Remetente ou destinatário não encontrado.' };
+    return { error: 'Remetente e destinatário não encontrado.' };
   }
   if (sender.balance < amount) {
     return { error: 'Saldo insuficiente.' };
