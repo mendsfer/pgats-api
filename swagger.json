@@ -18,7 +18,7 @@
                 "properties": {
                   "username": { "type": "string" },
                   "password": { "type": "string" },
-                  "isFavored": { "type": "boolean" }
+                  "favorecidos": { "type": "array", "items": { "type": "string" } }
                 },
                 "required": ["username", "password"]
               }
@@ -27,11 +27,11 @@
         },
         "responses": {
           "201": { "description": "Usuário criado" },
-          "400": { "description": "Usuário e senha são obrigatórios ou usuário já existe." }
+          "400": { "description": "Erro de validação ou usuário já existe" }
         }
       }
     },
-    "/auth/login": {
+    "/users/login": {
       "post": {
         "summary": "Login de usuário",
         "requestBody": {
@@ -51,7 +51,7 @@
         },
         "responses": {
           "200": { "description": "Login bem-sucedido" },
-          "400": { "description": "Usuário e senha são obrigatórios ou credenciais inválidas." }
+          "400": { "description": "Usuário ou senha inválidos" }
         }
       }
     },
@@ -75,16 +75,16 @@
                 "properties": {
                   "from": { "type": "string" },
                   "to": { "type": "string" },
-                  "amount": { "type": "number" }
+                  "value": { "type": "number" }
                 },
-                "required": ["from", "to", "amount"]
+                "required": ["from", "to", "value"]
               }
             }
           }
         },
         "responses": {
           "201": { "description": "Transferência realizada" },
-          "400": { "description": "Remetente, destinatário e valor são obrigatórios, saldo insuficiente, destinatário não encontrado ou transferência não permitida para não favorecido acima de R$ 5.000,00." }
+          "400": { "description": "Erro de validação ou regra de negócio" }
         }
       },
       "get": {

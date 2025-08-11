@@ -1,4 +1,6 @@
 // In-memory transfer database
 const transfers = [];
 
-module.exports = transfers;
+module.exports = {
+  transfers
+};
