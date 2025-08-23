@@ -24,3 +24,12 @@ jobs:
 
     - name: Run tests
       run: npm test
+
+    - name: Subir a API
+      run: npm start &
+
+    - name: Esperar a API funcionar
+      run: sleep 5
+
+    - name: Rodar os testes de API via http
+      run: npm run test-external
